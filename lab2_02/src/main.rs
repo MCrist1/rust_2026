@@ -45,11 +45,7 @@ fn reverse(s: &str) -> String {
 
 // True if `s` reads the same backwards. Reuse reverse().
 fn is_palindrome(s: &str) -> bool {
-    if s == reverse(&s) {
-        return true;
-    } else {
-        return false;
-    }
+    s == reverse(&s)
 }
 
 // A new String made of `s` repeated n times.
@@ -159,11 +155,13 @@ fn archive(note: Note) -> String {
 
 // Combine two notes. The first is consumed and reused, the second is only read.
 // Title becomes "<a>+<b>", body becomes "<a body> <b body>".
-/*fn merge(a: Note, b: &Note) -> Note
-{
-
+fn merge(mut a: Note, b: &Note) -> Note {
+    a.title.push('+');
+    a.title.push_str(&b.title);
+    a.body.push(' ');
+    a.body.push_str(&b.body);
+    a
 }
-*/
 
 fn main() {
     // Part 1
@@ -198,8 +196,8 @@ fn main() {
     append(&mut n1, "eggs");
     append(&mut n1, "bread");
     println!("{}: {}", n1.title, n1.body);
-    /* let merged = merge(n1, &n2);
+    let merged = merge(n1, &n2);
     println!("{}: {}", merged.title, merged.body);
     println!("{} word(s)", word_count(&merged));
-    println!("{}", archive(n2)); */
+    println!("{}", archive(n2));
 }
