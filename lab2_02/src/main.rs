@@ -97,9 +97,8 @@ fn shout(s: String) -> String {
 fn longer_of(a: String, b: String) -> String {
     if a.len() >= b.len() {
         return a;
-    } else {
-        return b;
     }
+    b
 }
 
 // ---------- Part 4: Notebook (a struct that owns its strings) ----------
