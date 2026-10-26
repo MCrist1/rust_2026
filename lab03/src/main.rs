@@ -144,68 +144,54 @@ fn main() {
         current = next;
     }
 
-     let mut current = u16::MAX;
+    let mut current = u16::MAX;
     while let Some(next) = next_prime(current) {
         println!("{}", next);
         current = next;
     }
 
-    
-    match print_char('A')
-    {
+    match print_char('A') {
         Ok(()) => println!(" Printed character successfully."),
         Err(err) => print_error(err),
     }
-    match print_char('\n')
-    {
+    match print_char('\n') {
         Ok(()) => println!(" Printed character successfully."),
         Err(err) => print_error(err),
     }
-    match to_lowercase('A')
-    {
+    match to_lowercase('A') {
         Ok(c) => println!("Lowercase: {}", c),
         Err(err) => print_error(err),
     }
-    match to_lowercase('2')
-    {
+    match to_lowercase('2') {
         Ok(c) => println!("Lowercase: {}", c),
         Err(err) => print_error(err),
     }
-    match to_uppercase('A')
-    {
+    match to_uppercase('A') {
         Ok(c) => println!("Uppercase: {}", c),
         Err(err) => print_error(err),
     }
-    match to_uppercase('c')
-    {
+    match to_uppercase('c') {
         Ok(c) => println!("Uppercase: {}", c),
         Err(err) => print_error(err),
     }
-    match char_to_number('A')
-    {
+    match char_to_number('A') {
         Ok(n) => println!("Number: {}", n),
         Err(err) => print_error(err),
     }
-    match char_to_number('0')
-    {
+    match char_to_number('0') {
         Ok(n) => println!("Number: {}", n),
         Err(err) => print_error(err),
     }
-    match char_to_number('1')
-    {
+    match char_to_number('1') {
         Ok(n) => println!("Number: {}", n),
         Err(err) => print_error(err),
     }
-    match char_to_number_hex('5')
-    {
+    match char_to_number_hex('5') {
         Ok(n) => println!("Hex Number: {}", n),
         Err(err) => print_error(err),
     }
-    match char_to_number_hex('X')
-    {   
+    match char_to_number_hex('X') {
         Ok(n) => println!("Hex Number: {}", n),
-        Err(err) => print_error(err),   
+        Err(err) => print_error(err),
     }
-
-
-}   
+}
