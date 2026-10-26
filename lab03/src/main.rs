@@ -61,6 +61,7 @@ fn res_checked_mul(x: u32, y: u32) -> Result<u32, String> {
     }
 }
 
+#[derive(Debug, PartialEq)]
 enum CharError {
     NotAscii,
     NotDigit,
@@ -142,4 +143,69 @@ fn main() {
         println!("{}", next);
         current = next;
     }
-}
+
+     let mut current = u16::MAX;
+    while let Some(next) = next_prime(current) {
+        println!("{}", next);
+        current = next;
+    }
+
+    
+    match print_char('A')
+    {
+        Ok(()) => println!(" Printed character successfully."),
+        Err(err) => print_error(err),
+    }
+    match print_char('\n')
+    {
+        Ok(()) => println!(" Printed character successfully."),
+        Err(err) => print_error(err),
+    }
+    match to_lowercase('A')
+    {
+        Ok(c) => println!("Lowercase: {}", c),
+        Err(err) => print_error(err),
+    }
+    match to_lowercase('2')
+    {
+        Ok(c) => println!("Lowercase: {}", c),
+        Err(err) => print_error(err),
+    }
+    match to_uppercase('A')
+    {
+        Ok(c) => println!("Uppercase: {}", c),
+        Err(err) => print_error(err),
+    }
+    match to_uppercase('c')
+    {
+        Ok(c) => println!("Uppercase: {}", c),
+        Err(err) => print_error(err),
+    }
+    match char_to_number('A')
+    {
+        Ok(n) => println!("Number: {}", n),
+        Err(err) => print_error(err),
+    }
+    match char_to_number('0')
+    {
+        Ok(n) => println!("Number: {}", n),
+        Err(err) => print_error(err),
+    }
+    match char_to_number('1')
+    {
+        Ok(n) => println!("Number: {}", n),
+        Err(err) => print_error(err),
+    }
+    match char_to_number_hex('5')
+    {
+        Ok(n) => println!("Hex Number: {}", n),
+        Err(err) => print_error(err),
+    }
+    match char_to_number_hex('X')
+    {   
+        Ok(n) => println!("Hex Number: {}", n),
+        Err(err) => print_error(err),   
+    }
+
+
+}   
