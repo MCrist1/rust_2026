@@ -129,6 +129,54 @@ fn print_error(err: CharError) {
     }
 }
 
+struct Student {
+    id: u32,
+    name: String,
+    grades: Vec<u32>,
+}
+
+fn find_student<'a>(students: &'a [Student], id: u32) -> Option<&'a Student> {
+    for s in students {
+        if s.id == id {
+            return Some(s);
+        }
+    }
+    None
+}
+
+fn calculate_average(student: &Student) -> Result<f32, &'static str> {
+    if student.grades.is_empty() {
+        return Err("Elevul nu are note!");
+    }
+    let sum: u32 = student.grades.iter().sum();
+    Ok(sum as f32 / student.grades.len() as f32)
+}
+
+fn test_p5() {
+    let catalog = vec![
+        Student {
+            id: 1,
+            name: String::from("Alex"),
+            grades: vec![10, 9, 8],
+        },
+        Student {
+            id: 2,
+            name: String::from("Radu"),
+            grades: vec![],
+        },
+    ];
+
+    for search_id in [1, 2, 99] {
+        match find_student(&catalog, search_id) {
+            Some(student) => match calculate_average(student) {
+                Ok(avg) => println!("{}: medie {:.2}", student.name, avg),
+                Err(err) => println!("{}: eroare ({})", student.name, err),
+            },
+            None => println!("Elevul cu ID-ul {} nu a fost gasit!", search_id),
+        }
+    }
+}
+
 fn main() {
     let a = checked_add(5, 10);
     let b = checked_mul(5, 10);
@@ -194,4 +242,6 @@ fn main() {
         Ok(n) => println!("Hex Number: {}", n),
         Err(err) => print_error(err),
     }
+
+    test_p5();
 }
